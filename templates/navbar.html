@@ -5,9 +5,7 @@
             <img src="{% static 'images/ncu_forum_logo.png' %}" />
             <h1>NCUWEB</h1>
         </a>
-        {% comment %} <a class="" href="{% url 'create-room' %}">
-            Order Posts by
-        </a> {% endcomment %}
+
         <form class="header__search" method="GET" action="{% url 'home' %}">
             <label>
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
@@ -25,7 +23,7 @@
             <form class="" method="GET" action="{% url 'home' %}">
 
                 <label for="order_option">
-                    Order Posts by <br>
+                    Sort Posts by <br>
                 </label>
                 <div class="custom-select" style="width:300px;">
                     <select class="order-selection" name="order_option" default='created'>
@@ -42,7 +40,7 @@
                         <option class="opt" value="ascending">ascending</option>
                     </select>
 
-                    <input id="order-button" type="submit" value="Order">
+                    <input id="order-button" type="submit" value="Sort">
                 </div>
                 
             </form>
@@ -68,7 +66,7 @@
                     </div>
                     {% else %}
                     <div class="avatar avatar--medium active">
-                        <img src="{% static 'images/avatar.svg' %}" />
+                        <img src="{% static 'images/default-avatar.svg' %}" />
                     </div>
                     {% endif %}
 
@@ -84,7 +82,7 @@
             {% else %}
 
             <a href="{% url 'login' %}">
-                <img src="{% static 'images/avatar.svg' %}" />
+                <img src="{% static 'images/default-avatar.svg' %}" />
                 <p>Login</p>
             </a>
             {% endif %}

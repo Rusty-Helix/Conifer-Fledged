@@ -26,23 +26,23 @@
             </div>
 
             <div class="form__group">
-              <label for="room_description">Post Description</label>
+              <label for="room_description">Post Content</label>
               {{form.description}}
             </div>
 
             <div class="form__group">
-              <label for="room_topic">Topic name</label>
-              <input required type="text" value="{{room.topic.name}}" name="topic" list="topic-list" />
+              <label for="room_topic">Topic</label>
+              <input required type="text" value="{{room.topic.name}}" name="topic" list="topic-list" placeholder="{{current_topic}}"/>
               <datalist id = "topic-list">
                 <select id = "room_topic">
                   {% for topic in topics%}
-                  <option value ="{{topic}}" >{{topic}}</option>
+                    <option value ="{{topic}}" >{{topic}}</option>
                   {% endfor %}
                 </select>
               </datalist>
             </div>
             <div class="form__group">
-              <label for="room_description">Room Description</label>
+              <label for="room_description">Attach a Photo</label>
               {{imageform.management_form}}
               {% for form in imageform %}
                   {{form}}

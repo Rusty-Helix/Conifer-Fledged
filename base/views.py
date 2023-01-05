@@ -128,11 +128,14 @@ def room(request, pk):
 def userProfile(request, pk):
     user = User.objects.get(id=pk)
     rooms = user.room_set.all()
+    room_count = Room.objects.all().count()
+    
     room_messages = user.message_set.all()
     topics = Topic.objects.all()
     context = {'user': user, 'rooms': rooms,
                'room_messages': room_messages,
                'topics': topics,
+               'room_count': room_count,
                 'is_home': request.path == '/',}
     
     return render(request, 'base/profile.html', context)
@@ -189,6 +192,7 @@ def createRoom(request):
 def updateRoom(request, pk):
     topics = Topic.objects.all()
     room = Room.objects.get(id=pk)
+    current_topic = room.topic
     form = RoomForm(instance=room)
     imageform = ImageForm()
     if request.method == 'POST':
@@ -207,10 +211,14 @@ def updateRoom(request, pk):
             if files:
                 for i in files:
                     Image.objects.create(room=f, image=i)
-            messages.success(request, "New Post created!")
+            messages.success(request, "Post Edited!")
+            return redirect('home')
         else:
             messages.error(request, form.errors)
+            return redirect('home')
+
     context = {'form':form,
+               'current_topic': current_topic,
                'topics':topics,
                'imageform':imageform,
                 'is_home': request.path == '/',}
@@ -258,6 +266,7 @@ def updateUser(request):
         form = UserForm(request.POST, request.FILES, instance=user)
         if form.is_valid():
             form.save()
+            # user.avatar.url = request.POST.get('avatar_url')
             return redirect('user-profile', pk=user.id)
         else:
             messages.error(request, form.errors)

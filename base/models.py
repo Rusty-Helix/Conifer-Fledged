@@ -16,52 +16,52 @@ class User(AbstractUser):
     
     bio = models.TextField(max_length=300, null=True)
 
-    avatar = models.ImageField(null=True, default="avatar.svg")
+    avatar = models.ImageField(null=True, blank=True, default="default-avatar.svg")
 
-    privacy = models.BooleanField(default=False)
+    # privacy = models.BooleanField(default=False)
 
-    CL_Subject = 0
-    EL_Subject = 1
-    FR_Subject = 2
-    IPLA_Subject = 3
-    MA_Subject = 4
-    PH_Subject = 5
-    CM_Subject = 6
-    OS_Subject = 7
-    JS_Subject = 8
-    CI_Subject = 9
-    ME_Subject = 10
-    CH_Subject = 11
-    EI_Subject = 12
-    BA_Subject = 13
-    MIS_Subject = 14
-    FM_Subject = 15
-    EC_Subject = 16
-    EE_Subject = 17
-    CE_Subject = 18
-    CO_Subject = 19
-    IPEECS_Subject = 20
-    AP_Subject = 21
-    GP_Subject = 22
-    SS_Subject = 23
-    GA_Subject = 24
-    HK_Subject = 25
-    LS_Subject = 26
-    BM_Subject = 27
-    SUBJECT_CHOICES = [(CL_Subject, '中國文學系'), (EL_Subject, '英美語文學系'), 
-                       (FR_Subject, '法國語文學系'), (IPLA_Subject, '文學院學士班'),
-                       (CM_Subject, '化學系'), (OS_Subject, '光電科學與工程學系'),
-                       (JS_Subject, '理學院學士班'), (CI_Subject, '土木工程學系'), 
-                       (ME_Subject, '機械工程學系'), (CH_Subject, '化學工程與材料工程學系'), 
-                       (EI_Subject, '工學院學士班'), (BA_Subject, '企業管理學系'), 
-                       (MIS_Subject, '資訊管理學系'), (FM_Subject, '財務金融學系'),
-                       (EC_Subject, '經濟學系'), (EE_Subject, '電機工程學系'),
-                       (CE_Subject, '資訊工程學系'), (CO_Subject, '通訊工程學系'),
-                       (IPEECS_Subject, '資訊電機學院學士班'), (AP_Subject, '大氣科學學系'),
-                       (GP_Subject, '地球科學學系'), (SS_Subject, '太空工程與科學學系'),
-                       (GA_Subject, '地科院學士班'), (HK_Subject, '客家語文暨社會科學學系'), 
-                       (LS_Subject, '生命科學系'), (BM_Subject, '生醫工程與科學學系')]
-    Subject = models.IntegerField(choices=SUBJECT_CHOICES, null=True)
+    CL_SUBJECT = 0
+    EL_SUBJECT = 1
+    FR_SUBJECT = 2
+    IPLA_SUBJECT = 3
+    MA_SUBJECT = 4
+    PH_SUBJECT = 5
+    CM_SUBJECT = 6
+    OS_SUBJECT = 7
+    JS_SUBJECT = 8
+    CI_SUBJECT = 9
+    ME_SUBJECT = 10
+    CH_SUBJECT = 11
+    EI_SUBJECT = 12
+    BA_SUBJECT = 13
+    MIS_SUBJECT = 14
+    FM_SUBJECT = 15
+    EC_SUBJECT = 16
+    EE_SUBJECT = 17
+    CE_SUBJECT = 18
+    CO_SUBJECT = 19
+    IPEECS_SUBJECT = 20
+    AP_SUBJECT = 21
+    GP_SUBJECT = 22
+    SS_SUBJECT = 23
+    GA_SUBJECT = 24
+    HK_SUBJECT = 25
+    LS_SUBJECT = 26
+    BM_SUBJECT = 27
+    SUBJECT_CHOICES = [(CL_SUBJECT, '中國文學系'), (EL_SUBJECT, '英美語文學系'), 
+                       (FR_SUBJECT, '法國語文學系'), (IPLA_SUBJECT, '文學院學士班'),
+                       (CM_SUBJECT, '化學系'), (OS_SUBJECT, '光電科學與工程學系'),
+                       (JS_SUBJECT, '理學院學士班'), (CI_SUBJECT, '土木工程學系'), 
+                       (ME_SUBJECT, '機械工程學系'), (CH_SUBJECT, '化學工程與材料工程學系'), 
+                       (EI_SUBJECT, '工學院學士班'), (BA_SUBJECT, '企業管理學系'), 
+                       (MIS_SUBJECT, '資訊管理學系'), (FM_SUBJECT, '財務金融學系'),
+                       (EC_SUBJECT, '經濟學系'), (EE_SUBJECT, '電機工程學系'),
+                       (CE_SUBJECT, '資訊工程學系'), (CO_SUBJECT, '通訊工程學系'),
+                       (IPEECS_SUBJECT, '資訊電機學院學士班'), (AP_SUBJECT, '大氣科學學系'),
+                       (GP_SUBJECT, '地球科學學系'), (SS_SUBJECT, '太空工程與科學學系'),
+                       (GA_SUBJECT, '地科院學士班'), (HK_SUBJECT, '客家語文暨社會科學學系'), 
+                       (LS_SUBJECT, '生命科學系'), (BM_SUBJECT, '生醫工程與科學學系')]
+    subject = models.IntegerField(choices=SUBJECT_CHOICES, null=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
@@ -132,5 +132,5 @@ class Report(models.Model):
         
 class Image(models.Model):
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to = "images", null=True, blank=True)
+    image = models.ImageField(null=True, blank=True)
     

@@ -79,7 +79,7 @@
               </div>
               {% else %}
               <div class="avatar avatar--medium active">
-                  <img src="{% static 'images/avatar.svg' %}" />
+                  <img src="{% static 'images/default-avatar.svg' %}" />
               </div>
               {% endif %}
               <span>@{{room.host.username}}</span>
@@ -147,7 +147,7 @@
                     </div>
                     {% else %}
                     <div class="avatar avatar--medium active">
-                        <img src="{% static 'images/avatar.svg' %}" />
+                        <img src="{% static 'images/default-avatar.svg' %}" />
                     </div>
                     {% endif %}
 
@@ -191,20 +191,20 @@
     <div class="participants">
       <h3 class="participants__top">Participants <span>({{participants.count}} Commented)</span></h3>
       <div class="participants__list scroll">
-        {% for user in participants %}
-        <a href="{%  url 'user-profile' user.id %}" class="participant">
-            {% if request.avatar %}
+        {% for participant in participants %}
+        <a href="{%  url 'user-profile' participant.id %}" class="participant">
+            {% if participant.avatar.url %}
             <div class="avatar avatar--medium active">
-                <img src="{{request.user.avatar.url}}" />
+                <img src="{{ participant.avatar.url}}" />
             </div>
             {% else %}
             <div class="avatar avatar--medium active">
-                <img src="{% static 'images/avatar.svg' %}" />
+                <img src="{% static 'images/default-avatar.svg' %}" />
             </div>
             {% endif %}
           <p>
-            {{user.name}}
-            <span>@{{user.username}}</span>
+            {{participant.name}}
+            <span>@{{participant.username}}</span>
           </p>
         </a>
         {% endfor %}

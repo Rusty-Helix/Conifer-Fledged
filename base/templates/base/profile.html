@@ -14,12 +14,12 @@
       <div class="profile">
         <div class="profile__avatar">
           {% if request.user.avatar.url %}
-          <div class="avatar avatar--medium active">
+          <div class="avatar avatar--large active">
             <img src="{{request.user.avatar.url}}" />
           </div>
           {% else %}
           <div class="avatar avatar--medium active">
-            <img src="{% static 'images/avatar.svg' %}" />
+            <img src="{% static 'images/default-avatar.svg' %}" />
           </div>
           {% endif %}
         </div>
@@ -31,7 +31,7 @@
           {% endif %}
         </div>
 
-        <div>
+        <!-- <div>
         {% if user.privacy is False %}
           <h3>Email</h3>
           <h3>{{user.email}}</h3>
@@ -43,7 +43,7 @@
           <h3>Phone number</h3>
           <h3> </h3>
         {% endif %}
-        </div>
+        </div> -->
 
         <div class="profile__about">
           <h3>About</h3>
