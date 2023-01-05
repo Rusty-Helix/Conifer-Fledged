@@ -1,0 +1,1 @@
+web: gunicorn ncuinfo.wsgi --log-file -
