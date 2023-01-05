@@ -18,6 +18,8 @@ class User(AbstractUser):
 
     avatar = models.ImageField(null=True, default="avatar.svg")
 
+    privacy = models.BooleanField(default=False)
+
     CL_Subject = 0
     EL_Subject = 1
     FR_Subject = 2

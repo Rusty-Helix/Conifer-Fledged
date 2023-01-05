@@ -30,6 +30,21 @@
           <a href="{% url 'update-user' %}" class="btn btn--main btn--pill">Edit Profile</a>
           {% endif %}
         </div>
+
+        <div>
+        {% if user.privacy is False %}
+          <h3>Email</h3>
+          <h3>{{user.email}}</h3>
+          <h3>Phone number</h3>
+          <h3>{{user.phone}}</h3>
+        {% else %}
+          <h3>Email</h3>
+          <h3> </h3>
+          <h3>Phone number</h3>
+          <h3> </h3>
+        {% endif %}
+        </div>
+
         <div class="profile__about">
           <h3>About</h3>
           <p>

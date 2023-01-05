@@ -74,7 +74,6 @@ def home(request):
         Q(description__icontains=q)
     ).order_by(str(direction_symbol+oo))
     # ).order_by(oo)
-    print(rooms)
     topics = Topic.objects.all()[0:5]
     room_count = rooms.count()
     room_messages = Message.objects.filter(
