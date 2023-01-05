@@ -32,7 +32,8 @@ class UserForm(forms.ModelForm):
 class ReportForm(forms.ModelForm):
     class Meta: 
         model = Report
-        fields = ['name']
+        fields = ['reason']
+
     
         CHOICES = [
             ('Spam', 'Spam'),
@@ -50,7 +51,7 @@ class ReportForm(forms.ModelForm):
         #     choices=CHOICES,
         # )
         
-        widgets = {'name': forms.RadioSelect}
+        widgets = {'reason': forms.RadioSelect}
 
 class ImageForm(forms.ModelForm):
     image = forms.ImageField(

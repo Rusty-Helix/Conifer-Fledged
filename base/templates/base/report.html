@@ -13,7 +13,7 @@
                 </path>
               </svg>
             </a>
-            <h3>Report Room</h3>
+            <h3>Report Post</h3>
           </div>
         </div>
         <div class="layout__body">
@@ -22,13 +22,11 @@
 
             <div class="form__group">
 
-              <label for="room_topic">Select the Problem of Room "{{room.name}}"</label>
+              <label for="room_topic">Select the Problem of the Post "{{room.name}}"</label>
               <hr>
               <div>
-                {% for choice in form.name %}
+                {% for choice in form.reason %}
                 <div>
-                  {% comment %} <hr> {% endcomment %}
-                  {% comment %} <input type="radio" id={{choice.tag}} name="name" value={{choice.tag}}/> {% endcomment %}
                   <label for = {{ choice.choice_label }}>
                     {{choice.choice_label}}{{ choice.tag }}
                   </label>

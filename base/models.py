@@ -123,7 +123,7 @@ class Report(models.Model):
         ('Else', 'Else'),
     )
     
-    name = models.CharField(max_length=50, choices=choices, default='Spam')
+    reason = models.CharField(max_length=50, choices=choices, default='Spam')
 
     def __str__(self):
         return self.name

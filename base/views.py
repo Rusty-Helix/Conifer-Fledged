@@ -175,7 +175,7 @@ def createRoom(request):
             if files:
                 for i in files:
                     Image.objects.create(room=f, image=i)
-            messages.success(request, "New Romm create!")
+            messages.success(request, "New Post created!")
         else:
             messages.error(request, form.errors)
         return redirect('home')
@@ -208,7 +208,7 @@ def updateRoom(request, pk):
             if files:
                 for i in files:
                     Image.objects.create(room=f, image=i)
-            messages.success(request, "New Romm create!")
+            messages.success(request, "New Post created!")
         else:
             messages.error(request, form.errors)
     context = {'form':form,
@@ -270,7 +270,10 @@ def updateUser(request):
 def topicsPage(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
     topics = Topic.objects.filter(name__icontains=q)
-    context = {'topics': topics, 'is_home': request.path == '/'}
+    room_count = Room.objects.all().count()
+    context = {'topics': topics,
+               'room_count': room_count,
+               'is_home': request.path == '/'}
     return render(request, 'base/topics.html', context)
 
 
@@ -303,7 +306,7 @@ def reportRoom(request, pk):
         Report.objects.create(
             user = request.user,
             room = Room.objects.get(id=pk),
-            name = request.POST.get('name'),
+            reason = request.POST.get('reason'),
         )
         return redirect('home')
     
@@ -330,5 +333,5 @@ def censorReportedRoom(request, pk):
             report_request.delete()
             
         return redirect('report-management')
-    context = {'report_requests': report_request, 'is_home': request.path == '/'}
+    context = {'report_request': report_request, 'is_home': request.path == '/'}
     return render(request, 'base/censorReportedRoom.html', context)

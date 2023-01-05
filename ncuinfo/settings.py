@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = f'django-insecure-3#av2c6nptlbbb6^muqkchu&fe3wv&n$t2+g$v!ir-f5%doocb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 if not DEBUG:
     CSRF_TRUSTED_ORIGINS = ['https://ncuwebgawain-production.up.railway.app'] 
 
@@ -152,8 +152,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "static/media")
-MEDIA_URL = "static/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "/media")
+MEDIA_URL = "/media/"
 
 # STATIC_ROOT =
 

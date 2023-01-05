@@ -1,5 +1,7 @@
 {% extends 'main.html' %}
 
+{% load static %}
+
 {% block content %}
 <main class="layout">
   <div class="container">
@@ -25,9 +27,17 @@
         <div class="activities__box">
           <div class="activities__boxHeader roomListRoom__header">
             <a href="{% url 'user-profile' report_request.user.id %}" class="roomListRoom__author">
-              <div class="avatar avatar--small">
-                <img src="{{report_request.user.avatar.url}}" />
-              </div>
+
+            {% if request.avatar.url %}
+            <div class="avatar avatar--small active">
+                <img src="{{request.user.avatar.url}}" />
+            </div>
+            {% else %}
+            <div class="avatar avatar--small active">
+                <img src="{% static 'images/avatar.svg' %}" />
+            </div>
+            {% endif %}
+
               <p>
                 @{{report_request.user}}
                 <span>{{report_request.create|timesince}} ago</span>
@@ -73,7 +83,7 @@
           <div class="activities__boxContent">
             <p>Reported the room “<a href="{% url 'room' report_request.room.id %}">{{report_request.room}}</a>”</p>
             <div class="activities__boxRoomContent">
-              Report Reason: "{{report_request.name}}"
+              Report Reason: "{{report_request.reason}}"
             </div>
             <div class="activities__boxRoomContent">
               Room Text Content <hr><br>"{{report_request.room.description}}"

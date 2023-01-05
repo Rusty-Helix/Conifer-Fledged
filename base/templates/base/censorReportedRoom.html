@@ -22,9 +22,8 @@
                 <form class="form" method="POST" action="">
                     {% csrf_token %}
                     <div class="form__group">
-                        {% comment %} <h2>Pass or Deny the Report Request</h2> {% endcomment %}
-                        <h3>Room Name "{{report_request.room.name}}"</h3>
-                        <h3>Report Reason "{{report_request.name}}"</h3>
+                        <h3>Post Name: "{{report_request.room.name}}"</h3>
+                        <h3>Report Reason: "{{report_request.reason}}"</h3>
                     </div>
 
                     <div class="for__group">
