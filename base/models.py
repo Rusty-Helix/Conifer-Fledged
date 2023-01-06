@@ -9,9 +9,11 @@ class User(AbstractUser):
     
     email = models.EmailField(unique=True, null=True)
     
-    GENDER_MALE = 0
-    GENDER_FEMALE = 1
-    GENDER_CHOICES = [(GENDER_MALE, 'Male'), (GENDER_FEMALE, 'Female')]
+    GENDER_CHOICES = (('M', 'Male'),
+                      ('F', 'Female'),
+                      ('T', 'Transgender'),
+                      ('N', 'Prefer not to tell'),
+                      )
     gender = models.IntegerField(choices=GENDER_CHOICES, null=True)
     
     bio = models.TextField(max_length=300, null=True)
