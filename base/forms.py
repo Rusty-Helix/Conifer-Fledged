@@ -5,7 +5,7 @@ from django import forms
 class MyUserCreationForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ['email', 'password1', 'password2', 'avatar']
+        fields = ['email', 'username', 'password1', 'password2',]
         
     def clean_email(self):
         User.email = self.cleaned_data.get('email', '')
@@ -34,8 +34,9 @@ class UserForm(forms.ModelForm):
                 'gender',
                 'real_first_name',
                 'real_last_name',
-                'email',
+                # 'email',
                 'bio',
+                # 'privacy',
                 ] 
 
 class ReportForm(forms.ModelForm):

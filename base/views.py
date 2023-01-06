@@ -169,7 +169,17 @@ def createRoom(request):
             f = form.save(commit=False)
             f.host = request.user
             topic_name = request.POST.get('topic')
-            topic, create = Topic.objects.get_or_create(name=topic_name)
+            topic, created = Topic.objects.get_or_create(name=topic_name)
+
+            if topic != None:
+                topic.post_count += 1        
+
+            elif created:
+                topic.creator=request.user
+                topic.name = topic_name
+                topic.description = ""
+            
+            
             f.topic = topic
             f.name = request.POST.get('name')
             f.description = request.POST.get('description')
@@ -260,17 +270,19 @@ def deleteMessage(request, pk):
 @login_required(login_url='login')
 def updateUser(request):
     user = request.user
+    current_avatar_url = user.avatar.url[8:]
     form = UserForm(instance=user)
 
     if request.method == 'POST':
         form = UserForm(request.POST, request.FILES, instance=user)
         if form.is_valid():
             form.save()
-            # user.avatar.url = request.POST.get('avatar_url')
+            # user.avatar.url = request.POST.get('avatar').url
             return redirect('user-profile', pk=user.id)
         else:
             messages.error(request, form.errors)
     context = {'form': form,
+               'current_avatar_url': current_avatar_url,
                 'is_home': request.path == '/',}
     return render(request, 'base/update-user.html', context)
 
@@ -295,17 +307,20 @@ def likeRoom(request, pk):
     user = request.user
     room_obj = Room.objects.get(id=pk)
     
-    if user in room_obj.likes.all():
-        room_obj.likes.remove(user)
-        room_obj.like_count = room_obj.likes.count()
-        room_obj.save()
+    if request.method == 'POST':
+        if user in room_obj.likes.all():
+            room_obj.likes.remove(user)
+            room_obj.like_count = room_obj.likes.count()
+            room_obj.save()
 
-    else:
-        room_obj.likes.add(user)
-        room_obj.like_count = room_obj.likes.count()
-        room_obj.save()
-    
-    return redirect('room', pk=pk)
+        else:
+            room_obj.likes.add(user)
+            room_obj.like_count = room_obj.likes.count()
+            room_obj.save()
+            
+        return redirect('room', pk=pk)
+
+    return render(request, 'base/room.html', context)
 
 @login_required(login_url='login')
 def reportRoom(request, pk):
@@ -334,10 +349,11 @@ def censorReportedRoom(request, pk):
     report_request = Report.objects.get(id=pk)
 
     if request.method == 'POST':
-        if request.POST.get('censor_result') == 'Pass Report Request (Delete Room)':
+        if request.POST.get('censor_result') == 'Pass Report Request (Delete Post)':
             report_request.room.delete()
             Report.objects.filter(id=report_request.id).delete()
-        elif request.POST.get('censor_result') == 'Pass Report Request (Delete Room)':
+
+        elif request.POST.get('censor_result') == 'Deny Report Request (Delete Request)':
             report_request.delete()
             
         return redirect('report-management')

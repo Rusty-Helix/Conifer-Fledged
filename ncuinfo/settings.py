@@ -36,6 +36,8 @@ INSTALLED_APPS = [
     'django_extensions',
     'base.apps.BaseConfig',
 
+    'fontawesomefree',
+
     'rest_framework',
     "corsheaders",
 ]
@@ -90,9 +92,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'railway',
         'USER': "postgres",
-        "PASSWORD": "I4qkryxpTMe8xwqoQCqF",
-        "HOST": "containers-us-west-26.railway.app", # or an IP address that your db is hosted
-        'PORT': '5895',
+        "PASSWORD": "88AFm0ifgCeOiP8Hwivr",
+        "HOST": "containers-us-west-195.railway.app", # or an IP address that your db is hosted
+        'PORT': '6687',
     }
 }
 
