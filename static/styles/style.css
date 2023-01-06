@@ -12,6 +12,7 @@
   --color-bg: #2d2d39;
   --color-success: #5dd693;
   --color-error: #fc4b0b;
+  --color-warning: #f20505;
 }
 
 /*========== base styles ==========*/
@@ -211,15 +212,17 @@ a {
   right: 3.5px;
 }
 
-.avatar.avatar--preview img {
-  display: block;
-  width: 30rem;
-  height: 30rem;
+img.avatar-preview {
+  width: 26em;
+  height: 26em;
+  max-width: 26rem;
+  max-height: 26rem;
+  overflow: hidden;
   border-radius: 50%;
+  object-fit:cover;
+  margin: auto;
   display: block;
   /* text-align: center; */
-  /* margin: auto;
-  display: block; */
 }
 
 /* .user-avatar {
@@ -309,7 +312,7 @@ a {
 
 .header > .container {
   display: flex;
-  gap: 9.5rem;
+  gap: 5.5rem;
 }
 
 .header__logo,
@@ -1325,4 +1328,9 @@ select:focus{
 }
 .fa-hammer:hover {
   text-shadow: 1px 1px 6px black, 2px 2px 6px var(--color-bg);
+}
+
+.btn--warning {
+  background-color: var(--color-warning);
+  color: var(--color-main-light);
 }
