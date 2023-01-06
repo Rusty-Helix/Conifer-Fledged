@@ -15,7 +15,7 @@
         <div class="profile__avatar">
           {% if user.avatar.url %}
           <div class="avatar avatar--large active">
-            <img src="{{request.user.avatar.url}}" />
+            <img src="{{user.avatar.url}}" />
           </div>
           {% else %}
           <div class="avatar avatar--medium active">
