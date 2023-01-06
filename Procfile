@@ -1,1 +1,1 @@
-web: gunicorn ncuinfo.wsgi --log-file -
+web: gunicorn conifer.wsgi --log-file -
