@@ -14,7 +14,7 @@ SECRET_KEY = f'django-insecure-3#av2c6nptlbbb6^muqkchu&fe3wv&n$t2+g$v!ir-f5%dooc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 # if not DEBUG:
-CSRF_TRUSTED_ORIGINS = ['https://ncuwebgawain-production.up.railway.app'] 
+CSRF_TRUSTED_ORIGINS = ['https://conifer-fledged-production.up.railway.app'] 
 
 ALLOWED_HOSTS = ['*']
 
