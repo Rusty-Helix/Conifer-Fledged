@@ -7,16 +7,16 @@ class MyUserCreationForm(UserCreationForm):
         model = User
         fields = ['email', 'username', 'password1', 'password2',]
         
-    def clean_email(self):
-        User.email = self.cleaned_data.get('email', '')
-        if User.email.endswith("@g.ncu.edu.tw"):
-            return User.email
-        elif User.email.endswith("@cc.ncu.edu.tw"):
-            return User.email
-        elif User.email.endswith("@mgt.ncu.edu.tw"):
-            return User.email
-        else:
-            raise forms.ValidationError('invalid.domain')
+    # def clean_email(self):
+    #     User.email = self.cleaned_data.get('email', '')
+    #     if User.email.endswith("@g.ncu.edu.tw"):
+    #         return User.email
+    #     elif User.email.endswith("@cc.ncu.edu.tw"):
+    #         return User.email
+    #     elif User.email.endswith("@mgt.ncu.edu.tw"):
+    #         return User.email
+    #     else:
+    #         raise forms.ValidationError('invalid.domain')
             
 class RoomForm(forms.ModelForm):
     class Meta:
@@ -30,7 +30,7 @@ class UserForm(forms.ModelForm):
         fields = [
                 'avatar',
                 'username',
-                'subject',
+                'department',
                 'gender',
                 'real_first_name',
                 'real_last_name',

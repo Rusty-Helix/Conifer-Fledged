@@ -42,7 +42,7 @@
             <span>{{room.created|timesince}} ago &nbsp;&nbsp;</span>
           </div>
           <div class="room__hosted">
-            <p>Hosted By</p>
+            <p>Created By</p>
             <a href="{% url 'user-profile' room.host.id %}" class="room__author">
               {% if room.host.avatar.url %}
               <div class="avatar avatar--medium active">

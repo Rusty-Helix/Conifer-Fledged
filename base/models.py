@@ -14,7 +14,7 @@ class User(AbstractUser):
                       ('T', 'Transgender'),
                       ('N', 'Prefer not to tell'),
                       )
-    gender = models.IntegerField(choices=GENDER_CHOICES, null=True)
+    gender = models.CharField(choices=GENDER_CHOICES, null=True, max_length=2)
     
     bio = models.TextField(max_length=300, null=True)
 
@@ -22,48 +22,48 @@ class User(AbstractUser):
 
     # privacy = models.BooleanField(default=False)
 
-    CL_SUBJECT = 0
-    EL_SUBJECT = 1
-    FR_SUBJECT = 2
-    IPLA_SUBJECT = 3
-    MA_SUBJECT = 4
-    PH_SUBJECT = 5
-    CM_SUBJECT = 6
-    OS_SUBJECT = 7
-    JS_SUBJECT = 8
-    CI_SUBJECT = 9
-    ME_SUBJECT = 10
-    CH_SUBJECT = 11
-    EI_SUBJECT = 12
-    BA_SUBJECT = 13
-    MIS_SUBJECT = 14
-    FM_SUBJECT = 15
-    EC_SUBJECT = 16
-    EE_SUBJECT = 17
-    CE_SUBJECT = 18
-    CO_SUBJECT = 19
-    IPEECS_SUBJECT = 20
-    AP_SUBJECT = 21
-    GP_SUBJECT = 22
-    SS_SUBJECT = 23
-    GA_SUBJECT = 24
-    HK_SUBJECT = 25
-    LS_SUBJECT = 26
-    BM_SUBJECT = 27
-    SUBJECT_CHOICES = [(CL_SUBJECT, '中國文學系'), (EL_SUBJECT, '英美語文學系'), 
-                       (FR_SUBJECT, '法國語文學系'), (IPLA_SUBJECT, '文學院學士班'),
-                       (CM_SUBJECT, '化學系'), (OS_SUBJECT, '光電科學與工程學系'),
-                       (JS_SUBJECT, '理學院學士班'), (CI_SUBJECT, '土木工程學系'), 
-                       (ME_SUBJECT, '機械工程學系'), (CH_SUBJECT, '化學工程與材料工程學系'), 
-                       (EI_SUBJECT, '工學院學士班'), (BA_SUBJECT, '企業管理學系'), 
-                       (MIS_SUBJECT, '資訊管理學系'), (FM_SUBJECT, '財務金融學系'),
-                       (EC_SUBJECT, '經濟學系'), (EE_SUBJECT, '電機工程學系'),
-                       (CE_SUBJECT, '資訊工程學系'), (CO_SUBJECT, '通訊工程學系'),
-                       (IPEECS_SUBJECT, '資訊電機學院學士班'), (AP_SUBJECT, '大氣科學學系'),
-                       (GP_SUBJECT, '地球科學學系'), (SS_SUBJECT, '太空工程與科學學系'),
-                       (GA_SUBJECT, '地科院學士班'), (HK_SUBJECT, '客家語文暨社會科學學系'), 
-                       (LS_SUBJECT, '生命科學系'), (BM_SUBJECT, '生醫工程與科學學系')]
-    subject = models.IntegerField(choices=SUBJECT_CHOICES, null=True)
+    CL_DEPARTMENT = 0
+    EL_DEPARTMENT = 1
+    FR_DEPARTMENT = 2
+    IPLA_DEPARTMENT = 3
+    MA_DEPARTMENT = 4
+    PH_DEPARTMENT = 5
+    CM_DEPARTMENT = 6
+    OS_DEPARTMENT = 7
+    JS_DEPARTMENT = 8
+    CI_DEPARTMENT = 9
+    ME_DEPARTMENT = 10
+    CH_DEPARTMENT = 11
+    EI_DEPARTMENT = 12
+    BA_DEPARTMENT = 13
+    MIS_DEPARTMENT = 14
+    FM_DEPARTMENT = 15
+    EC_DEPARTMENT = 16
+    EE_DEPARTMENT = 17
+    CE_DEPARTMENT = 18
+    CO_DEPARTMENT = 19
+    IPEECS_DEPARTMENT = 20
+    AP_DEPARTMENT = 21
+    GP_DEPARTMENT = 22
+    SS_DEPARTMENT = 23
+    GA_DEPARTMENT = 24
+    HK_DEPARTMENT = 25
+    LS_DEPARTMENT = 26
+    BM_DEPARTMENT = 27
+    DEPARTMENT_CHOICES = [(CL_DEPARTMENT, '中國文學系'), (EL_DEPARTMENT, '英美語文學系'), 
+                       (FR_DEPARTMENT, '法國語文學系'), (IPLA_DEPARTMENT, '文學院學士班'),
+                       (CM_DEPARTMENT, '化學系'), (OS_DEPARTMENT, '光電科學與工程學系'),
+                       (JS_DEPARTMENT, '理學院學士班'), (CI_DEPARTMENT, '土木工程學系'), 
+                       (ME_DEPARTMENT, '機械工程學系'), (CH_DEPARTMENT, '化學工程與材料工程學系'), 
+                       (EI_DEPARTMENT, '工學院學士班'), (BA_DEPARTMENT, '企業管理學系'), 
+                       (MIS_DEPARTMENT, '資訊管理學系'), (FM_DEPARTMENT, '財務金融學系'),
+                       (EC_DEPARTMENT, '經濟學系'), (EE_DEPARTMENT, '電機工程學系'),
+                       (CE_DEPARTMENT, '資訊工程學系'), (CO_DEPARTMENT, '通訊工程學系'),
+                       (IPEECS_DEPARTMENT, '資訊電機學院學士班'), (AP_DEPARTMENT, '大氣科學學系'),
+                       (GP_DEPARTMENT, '地球科學學系'), (SS_DEPARTMENT, '太空工程與科學學系'),
+                       (GA_DEPARTMENT, '地科院學士班'), (HK_DEPARTMENT, '客家語文暨社會科學學系'), 
+                       (LS_DEPARTMENT, '生命科學系'), (BM_DEPARTMENT, '生醫工程與科學學系')]
+    department = models.IntegerField(choices=DEPARTMENT_CHOICES, null=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
