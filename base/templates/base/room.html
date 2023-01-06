@@ -109,9 +109,9 @@
                 <div class="thread__author">
                   <a href="{% url 'user-profile' message.user.id %}" class="thread__authorInfo">
 
-                    {% if request.avatar %}
+                    {% if message.user.avatar.url %}
                     <div class="avatar avatar--medium active">
-                        <img src="{{request.user.avatar.url}}" />
+                        <img src="{{message.user.avatar.url}}" />
                     </div>
                     {% else %}
                     <div class="avatar avatar--medium active">
