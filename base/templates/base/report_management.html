@@ -73,12 +73,12 @@
 
           </div>
           <div class="activities__boxContent">
-            <p>Reported the room “<a href="{% url 'room' report_request.room.id %}">{{report_request.room}}</a>”</p>
+            <p>Reported the Post “<a href="{% url 'room' report_request.room.id %}">{{report_request.room}}</a>”</p>
             <div class="activities__boxRoomContent">
               Report Reason: "{{report_request.reason}}"
             </div>
             <div class="activities__boxRoomContent">
-              Room Text Content <hr><br>"{{report_request.room.description}}"
+              Post Text Content: <hr><br>"{{report_request.room.description || linebreaks }}"
             </div>
           </div>
 
