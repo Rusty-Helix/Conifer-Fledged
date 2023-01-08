@@ -22,9 +22,9 @@
           <div class="activities__boxHeader roomListRoom__header">
             <a href="{% url 'user-profile' report_request.user.id %}" class="roomListRoom__author">
 
-            {% if request.avatar.url %}
+            {% if request_request.user.avatar.url %}
             <div class="avatar avatar--small active">
-                <img src="{{request.user.avatar.url}}" />
+                <img src="{{request_request.user.avatar.url}}" />
             </div>
             {% else %}
             <div class="avatar avatar--small active">
