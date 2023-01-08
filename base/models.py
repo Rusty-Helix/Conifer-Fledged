@@ -131,7 +131,7 @@ class Report(models.Model):
     reason = models.CharField(max_length=50, choices=choices, default='Spam')
 
     def __str__(self):
-        return self.name
+        return self.reason
         
 class Image(models.Model):
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
