@@ -244,6 +244,10 @@ def deleteRoom(request, pk):
 
     if request.method == 'POST':
         room.delete()
+        room.topic.post_count -= 1
+        if room.topic.post_count <= 0:
+            room.topic.delete()
+            
         return redirect('home')
     context = {'obj': room,
                'is_home': request.path == '/',}
